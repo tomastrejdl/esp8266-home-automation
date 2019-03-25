@@ -2,6 +2,7 @@
   "name": "react-test",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tomastrejdl.github.io/esp8266-home-automation/",
   "dependencies": {
     "material-design-lite": "^1.3.0",
     "react": "^16.8.2",
