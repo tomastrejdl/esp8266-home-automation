@@ -1,9 +1,9 @@
-import Led from "./Led";
-import NavBar from "./NavBar";
-import EspConnection from "./EspConnection";
-import Servo from "./Servo";
-import AddControlButton from "./AddControlButton";
-import AddControlDialog from "./AddControlDialog";
+import Led from './Led';
+import NavBar from './NavBar';
+import EspConnection from './EspConnection';
+import Servo from './Servo';
+import AddControlButton from './AddControlButton';
+import AddControlDialog from './AddControlDialog';
 
 export {
   Led,
@@ -11,5 +11,5 @@ export {
   EspConnection,
   Servo,
   AddControlButton,
-  AddControlDialog
+  AddControlDialog,
 };

@@ -9,41 +9,41 @@ import {
 } from "./components";
 
 class App extends Component {
-  state = {
-    servos: [
-      {
-        id: "servo_1",
-        name: "Blinds left",
-        value: 20
-      },
-      {
-        id: "servo_2",
-        name: "Blinds right",
-        value: 150
-      }
-    ],
-    leds: [
-      {
-        id: "led_1",
-        name: "Desk light",
-        value: 1
-      },
-      {
-        id: "led_2",
-        name: "Ceiling light",
-        value: 0
-      }
-    ]
-  };
-  lastMove = 1000;
-
   constructor() {
     super();
+
+    this.state = {
+      espIp: "192.168.0.105",
+      servos: [
+        {
+          id: "servo_1",
+          name: "Blinds left",
+          value: 20
+        },
+        {
+          id: "servo_2",
+          name: "Blinds right",
+          value: 150
+        }
+      ],
+      leds: [
+        {
+          id: "led_1",
+          name: "Desk light",
+          value: 1
+        },
+        {
+          id: "led_2",
+          name: "Ceiling light",
+          value: 0
+        }
+      ]
+    };
     this.lastMove = 1000;
   }
 
   createCallback(context) {
-    return function() {
+    return function () {
       if (this.readyState === 4 && this.status === 200) {
         const status = JSON.parse(this.responseText);
         console.log(status);
@@ -63,21 +63,29 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.connectToEsp();
+    // this.connectToEsp();
   }
 
-  connectToEsp() {
-    const ip = document.getElementById("esp_ip").value;
+  connectToEsp = () => {
+    const ip = this.state.espIp;
+    if (
+      !/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
+        ip
+      )
+    ) {
+      alert("Enter a valid IPv4 address!");
+      return;
+    }
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://" + ip + ":80/status", true);
     xhr.onreadystatechange = this.createCallback(this);
     xhr.send();
-  }
+  };
 
-  handleServoAngleChange = event => {
+  handleServoAngleChange = (event) => {
     const angle = event.target.value;
     const servoId = event.target.id;
-    const ip = document.getElementById("esp_ip").value;
+    const ip = this.state.espIp;
     if (performance.now() - this.lastMove > 100) {
       var xhr = new XMLHttpRequest();
       xhr.open(
@@ -100,7 +108,7 @@ class App extends Component {
   handleLedSwitchToggle = event => {
     const value = event.target.checked === true ? 1 : 0;
     const ledId = event.target.id;
-    const ip = document.getElementById("esp_ip").value;
+    const ip = this.state.espIp;
     var xhr = new XMLHttpRequest();
     xhr.open(
       "GET",
@@ -117,12 +125,20 @@ class App extends Component {
     this.setState({ leds });
   };
 
+  onEspIpChange = event => {
+    this.setState({ espIp: event.target.value });
+  };
+
   render() {
     return (
       <div className="app">
         <header className="app__header">
           <NavBar />
-          <EspConnection handleConnectClick={this.connectToEsp} />
+          <EspConnection
+            handleConnectClick={this.connectToEsp}
+            onEspIpChange={this.onEspIpChange}
+            espIpDefaultValue={this.state.espIp}
+          />
         </header>
         <main className="app__content">
           <div className="servos">

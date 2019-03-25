@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+// import React from 'react';
 
-export default class AddControlDialog extends Component {
-  render() {
-    return (
-      <div className="mdl-dialog">
-        <h4>Dialog Title</h4>
-        <p>
-          <button />
-          <button />
-        </p>
-      </div>
-    );
-  }
-}
+// const AddControlDialog = (props) => {
+//   const { } = props;
+//   return (
+//     <div className="mdl-dialog">
+//       <h4>Dialog Title</h4>
+//       <p>
+//         <button />
+//         <button />
+//       </p>
+//     </div>
+//   );
+// };
+
+// export default AddControlDialog;
