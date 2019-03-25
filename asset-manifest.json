@@ -1,13 +1,13 @@
 {
   "main.css": "/esp8266-home-automation/static/css/main.89c14a60.chunk.css",
-  "main.js": "/esp8266-home-automation/static/js/main.75027e6b.chunk.js",
-  "main.js.map": "/esp8266-home-automation/static/js/main.75027e6b.chunk.js.map",
-  "runtime~main.js": "/esp8266-home-automation/static/js/runtime~main.ea76618a.js",
-  "runtime~main.js.map": "/esp8266-home-automation/static/js/runtime~main.ea76618a.js.map",
-  "static/js/2.b2f5ab12.chunk.js": "/esp8266-home-automation/static/js/2.b2f5ab12.chunk.js",
-  "static/js/2.b2f5ab12.chunk.js.map": "/esp8266-home-automation/static/js/2.b2f5ab12.chunk.js.map",
+  "main.js": "/esp8266-home-automation/static/js/main.14243f50.chunk.js",
+  "main.js.map": "/esp8266-home-automation/static/js/main.14243f50.chunk.js.map",
+  "runtime~main.js": "/esp8266-home-automation/static/js/runtime~main.6c083cea.js",
+  "runtime~main.js.map": "/esp8266-home-automation/static/js/runtime~main.6c083cea.js.map",
+  "static/js/2.ef281e85.chunk.js": "/esp8266-home-automation/static/js/2.ef281e85.chunk.js",
+  "static/js/2.ef281e85.chunk.js.map": "/esp8266-home-automation/static/js/2.ef281e85.chunk.js.map",
   "index.html": "/esp8266-home-automation/index.html",
-  "precache-manifest.c097ba6389858092422e930d27c0c77d.js": "/esp8266-home-automation/precache-manifest.c097ba6389858092422e930d27c0c77d.js",
+  "precache-manifest.3e9f7d3cab992f0ac069a3daa5be5317.js": "/esp8266-home-automation/precache-manifest.3e9f7d3cab992f0ac069a3daa5be5317.js",
   "service-worker.js": "/esp8266-home-automation/service-worker.js",
   "static/css/main.89c14a60.chunk.css.map": "/esp8266-home-automation/static/css/main.89c14a60.chunk.css.map"
 }

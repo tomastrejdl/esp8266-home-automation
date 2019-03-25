@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/esp8266-home-automation/precache-manifest.c097ba6389858092422e930d27c0c77d.js"
+  "/esp8266-home-automation/precache-manifest.3e9f7d3cab992f0ac069a3daa5be5317.js"
 );
 
 workbox.clientsClaim();
