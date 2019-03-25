@@ -5,8 +5,7 @@ import {
   Servo,
   NavBar,
   EspConnection,
-  AddControlButton,
-  AddControlDialog
+  AddControlButton
 } from "./components";
 
 class App extends Component {
