@@ -1,12 +1,40 @@
 import React, { Component } from "react";
 import "./App.css";
-import Servo from "./components/Servo";
-import Led from "./components/Led";
+import {
+  Led,
+  Servo,
+  NavBar,
+  EspConnection,
+  AddControlButton,
+  AddControlDialog
+} from "./components";
 
 class App extends Component {
   state = {
-    servos: [],
-    leds: []
+    servos: [
+      {
+        id: "servo_1",
+        name: "Blinds left",
+        value: 20
+      },
+      {
+        id: "servo_2",
+        name: "Blinds right",
+        value: 150
+      }
+    ],
+    leds: [
+      {
+        id: "led_1",
+        name: "Desk light",
+        value: 1
+      },
+      {
+        id: "led_2",
+        name: "Ceiling light",
+        value: 0
+      }
+    ]
   };
   lastMove = 1000;
 
@@ -36,14 +64,16 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.connectToEsp();
+  }
+
+  connectToEsp() {
     const ip = document.getElementById("esp_ip").value;
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://" + ip + ":80/status", true);
     xhr.onreadystatechange = this.createCallback(this);
     xhr.send();
   }
-
-  initState(status) {}
 
   handleServoAngleChange = event => {
     const angle = event.target.value;
@@ -90,41 +120,32 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <div>
-            <i className="material-icons icon">settings</i>
-            <i className="material-icons icon icon2">settings</i>
-          </div>
-          <h1>ESP8266 Servo + LED</h1>
+      <div className="app">
+        <header className="app__header">
+          <NavBar />
+          <EspConnection handleConnectClick={this.connectToEsp} />
         </header>
-        <main>
-          <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input
-              className="mdl-textfield__input"
-              type="text"
-              id="esp_ip"
-              defaultValue="192.168.0.105"
-            />
-            <label className="mdl-textfield__label" htmlFor="esp_ip">
-              ESP IP
-            </label>
+        <main className="app__content">
+          <div className="servos">
+            {this.state.servos.map(servo => (
+              <Servo
+                key={servo.id}
+                servo={servo}
+                handleServoAngleChange={this.handleServoAngleChange}
+              />
+            ))}
           </div>
-          {this.state.servos.map(servo => (
-            <Servo
-              key={servo.id}
-              servo={servo}
-              handleServoAngleChange={this.handleServoAngleChange}
-            />
-          ))}
-          {this.state.leds.map(led => (
-            <Led
-              key={led.id}
-              led={led}
-              handleLedSwitchToggle={this.handleLedSwitchToggle}
-            />
-          ))}
+          <div className="leds">
+            {this.state.leds.map(led => (
+              <Led
+                key={led.id}
+                led={led}
+                handleLedSwitchToggle={this.handleLedSwitchToggle}
+              />
+            ))}
+          </div>
+          {/* <AddControlDialog /> */}
+          <AddControlButton />
         </main>
       </div>
     );

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ESP Home Auto",
+  "name": "ESP8266 Home Automation",
   "icons": [
     {
       "src": "favicon.ico",
