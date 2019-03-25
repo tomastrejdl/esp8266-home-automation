@@ -1,5 +1,7 @@
 # ESP8266 HOME AUTOMATION **preALPHA**
 
+[![Build Status](https://travis-ci.org/tomastrejdl/esp8266-home-automation.svg?branch=master)](https://travis-ci.org/tomastrejdl/esp8266-home-automation)
+
 A React web app and Arduino sketch which let you setup and controll Servos, LEDs, ... from your browser over Wi-Fi.
 
 ```
